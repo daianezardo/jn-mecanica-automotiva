@@ -1,6 +1,7 @@
 import { Container, Navbar, Nav, Button } from 'react-bootstrap'
 import Logo from './assets/img/logo-jn.png'
 import Car from './assets/img/car.jpg'
+import { Children } from 'react'
 
 function Header() {
   return (
@@ -31,14 +32,24 @@ function Footer () {
   )
 }
 
+function Layout ( { children } ) {
+  return (
+    <>
+    <Header/>
+    <main>
+    {children}
+    </main>
+    <Footer/>
+    </>
+  )
+}
+
 
 function HomeView() {
   return (
-    <>
-    <Header />
-    <main>
-      <Container>
-      <div className='shadow border p-4 p-md-5 my-3 banner-home d-md-flex align-items-center'>
+    <Layout>
+        <Container>
+      <div className='shadow border p-4 p-md-5 git my-3 banner-home d-md-flex align-items-center'>
         <div>
    <h1>Bem vindo(a) à JN!</h1>
    <p>Conheça nossos serviços</p>
@@ -50,9 +61,16 @@ function HomeView() {
         </div>
       </div>
       </Container>
-    </main>
-    <Footer />
-    </>
+    </Layout>
+  )
+}
+
+function NotFoundView () {
+  return (
+   <Layout>
+     <h1>Página não encontrada.</h1>
+   </Layout>
+
   )
 }
 
