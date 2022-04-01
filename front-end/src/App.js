@@ -38,12 +38,16 @@ function HomeView() {
     <Header />
     <main>
       <Container>
-      <div className='shadow border p-4 my-3 banner-home'>
+      <div className='shadow border p-4 p-md-5 my-3 banner-home d-md-flex align-items-center'>
+        <div>
    <h1>Bem vindo(a) à JN!</h1>
    <p>Conheça nossos serviços</p>
    <p>Faça seu agendamento agora mesmo.</p>
    <Button className='text-uppercase btn-services'>Serviços</Button>
+        </div>
+        <div>
    <img src={Car} alt='JN Mecânica Automotiva' width={360} height={225} className='img-fluid'/>
+        </div>
       </div>
       </Container>
     </main>
