@@ -20,3 +20,34 @@
         margin: 0 5px;
     }
 }
+
+.footer {
+    background-color: #73F9C9;
+}
+
+html, body, #root {
+    height: 100%;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+
+}
+
+#root > main {
+    flex: 1;
+}
+
+.btn-services {
+    background-color: #0DFD6D;
+    border: 0;
+}
+
+.banner-home h1 {
+    color: #73F9C9;
+}
+
+.banner-home p {
+    font-size: 1.125rem;
+}
