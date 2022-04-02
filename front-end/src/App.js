@@ -1,81 +1,14 @@
-import { Container, Navbar, Nav, Button } from 'react-bootstrap'
-import Logo from './assets/img/logo-jn.png'
-import Car from './assets/img/car.jpg'
-import { Children } from 'react'
-
-function Header() {
-  return (
-    <header>
-      <Navbar expand='md' className='main-navbar'>
-      <Container>
-        <Navbar.Brand href='/'>
-          <img src={Logo} alt='JN Mecânica Automotiva' width={115} height={75} /> 
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls='navbar-header' />
-        <Navbar.Collapse id='navbar-header' >
-        <Nav className='ms-auto'>
-        <Nav.Link href='/'>Home</Nav.Link>
-        <Nav.Link href='/serviços'>Serviços</Nav.Link>
-        </Nav>
-        </Navbar.Collapse>
-      </Container>
-      </Navbar>
-    </header>
-  )
-}
-
-function Footer () {
-  return (
-    <footer className='footer text-center text-black py-2 mt-4'>
-    <p className='m-0'>Todos os direitos reservados à JN Mecânica Automotiva.</p>
-    </footer>
-  )
-}
-
-function Layout ( { children } ) {
-  return (
-    <>
-    <Header/>
-    <main>
-    {children}
-    </main>
-    <Footer/>
-    </>
-  )
-}
-
-
-function HomeView() {
-  return (
-    <Layout>
-        <Container>
-      <div className='shadow border p-4 p-md-5 git my-3 banner-home d-md-flex align-items-center'>
-        <div>
-   <h1>Bem vindo(a) à JN!</h1>
-   <p>Conheça nossos serviços</p>
-   <p>Faça seu agendamento agora mesmo.</p>
-   <Button className='text-uppercase btn-services'>Serviços</Button>
-        </div>
-        <div>
-   <img src={Car} alt='JN Mecânica Automotiva' width={360} height={225} className='img-fluid'/>
-        </div>
-      </div>
-      </Container>
-    </Layout>
-  )
-}
-
-function NotFoundView () {
-  return (
-   <Layout>
-     <h1>Página não encontrada.</h1>
-   </Layout>
-
-  )
-}
+import { Route, Routes } from "react-router-dom";
+import { HomeView } from "./views/home";
+import { NotFoundView } from "./views/NotFound"
 
 function App() {
-  return <HomeView />
+  return (
+    <Routes>
+      <Route path='/' element={<HomeView />} />
+      <Route path='*' element={<NotFoundView />} />
+    </Routes>
+  );
 }
 
 export default App;
