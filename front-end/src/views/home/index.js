@@ -13,7 +13,7 @@ export function HomeView() {
      <h1>Bem vindo(a) à JN!</h1>
      <p>Conheça nossos serviços</p>
      <p>Faça seu agendamento agora mesmo.</p>
-     <Button as={Link} to='/serviços' className='text-uppercase btn-services'>Serviços</Button>
+     <Button as={Link} to='/servicos' className='text-uppercase btn-services'>Serviços</Button>
           </div>
           <div>
      <img src={Car} alt='JN Mecânica Automotiva' width={360} height={225} className='img-fluid'/>

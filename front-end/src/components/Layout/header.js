@@ -14,7 +14,7 @@ export function Header() {
           <Navbar.Collapse id='navbar-header' >
           <Nav className='ms-auto'>
           <Nav.Link as={Link} to='/'>Home</Nav.Link>
-          <Nav.Link as={Link} to='/serviços'>Serviços</Nav.Link>
+          <Nav.Link as={Link} to='/servicos'>Serviços</Nav.Link>
           </Nav>
           </Navbar.Collapse>
         </Container>
