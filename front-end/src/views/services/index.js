@@ -9,11 +9,10 @@ export function ServicesView () {
     const [loading, setLoading] = useState(true)
     const [errorMessage, SetErrorMessage] = useState()
      useEffect(() => {
-        fetch('http://localhost:3001/services')
+        fetch(`${process.env.REACT_APP_API_URL}/services`)
         .then((response) => response.json())
         .then((data) => { 
             setServices(data)
-            setLoading(false)
          })
          .catch(() => {
              SetErrorMessage('Falha ao buscar serviços. Recarregue a página.')
