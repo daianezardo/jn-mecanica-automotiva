@@ -44,6 +44,10 @@ html, body, #root {
     border: 0;
 }
 
+.btn-services:hover {
+    background-color: #025538;
+}
+
 .banner-home h1 {
     color: #73F9C9;
 }
