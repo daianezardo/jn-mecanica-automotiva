@@ -1,53 +1,19 @@
 import { Col, Container, Row } from "react-bootstrap"
 import { CardServices } from "../../components/cardservices"
 import { Layout } from "../../components/Layout"    
-import Freio from "../../assets/img/freio.png"
-import Balanceamento from '../../assets/img/balanceamento.jpg'
-import Troca from '../../assets/img/troca-de-oleo.jpg'
-import Injection from '../../assets/img/injection.jpg'
-import Sistem from '../../assets/img/sistem.jpg'
-import Mecanic from '../../assets/img/mecanica.jpg'
+import { useEffect, useState } from "react"
 
-const services = [
-    {
-        image: Freio,
-        id: 1,
-        name: 'Inspeção de Freios',
-        shortDescription: 'Avaliação do estado do veículo por meio de equipamentos.'
-    },
-    {
-        image: Balanceamento,
-        id: 2,
-        name: 'Alinhamento e Balanceamento',
-        shortDescription: 'Alinhamento e balanceamento dos pneus.'
-    },
-    {
-        image: Troca,
-        id: 3,
-        name: 'Troca de Óleo',
-        shortDescription: 'Realização do processo de troca de óleo e filtro.'
-    },
-    {
-        image: Injection,
-        id: 4,
-        name: 'Injeção Eletrônica',
-        shortDescription: 'Especialista em injeção eletrônica moderna e convencionais.'
-    },
-    {
-        image: Sistem,
-        id: 5,
-        name: 'Sistema de Exaustão',
-        shortDescription: 'Escapamento original e modificados.'
-    },
-    {
-        image: Mecanic,
-        id: 6,
-        name: 'Reparo de Motor',
-        shortDescription: 'Diagnóstico de motores modernos, retíficas completas.'
-    }
-]
+let services = []
 
 export function ServicesView () {
+    const [services, setServices] = useState([])
+     useEffect(() => {
+        fetch('http://localhost:3001/services')
+        .then((response) => response.json())
+        .then((data) => { 
+            setServices(data)
+         })
+    }, [])
     return (
         <Layout>
             <Container>
