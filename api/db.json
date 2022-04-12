@@ -1,37 +1,37 @@
 {
   "services": [
     {
-      "image": "/assets/img/freio.png",
+      "image": "/images/freio.png",
       "name": "Inspeção de Freios",
       "shortDescription": "Avaliação do estado do veículo por meio de equipamentos.",
       "id": 1
     },
     {
-      "image": "/assets/img/balanceamento.jpg",
+      "image": "/images/balanceamento.jpg",
       "name": "Alinhamento e Balanceamento",
       "shortDescription": "Alinhamento e balanceamento dos pneus.",
       "id": 2
     },
     {
-      "image": "/assets/img/troca-de-oleo.jpg",
+      "image": "/images/troca-de-oleo.jpg",
       "name": "Troca de Óleo",
       "shortDescription": "Realização do processo de troca de óleo e filtro.",
       "id": 3
     },
     {
-      "image": "/assets/img/injection.jpg",
+      "image": "/images/injection.jpg",
       "name": "Injeção Eletrônica",
       "shortDescription": "Especialista em injeção eletrônica moderna e convencionais.",
       "id": 4
     },
     {
-      "image": "/assets/img/sistem.jpg",
+      "image": "/images/sistem.jpg",
       "name": "Sistema de Exaustão",
       "shortDescription": "Escapamento original e modificados.",
       "id": 5
     },
     {
-      "image": "/assets/img/mecanica.jpg",
+      "image": "/images/mecanica.jpg",
       "name": "Reparo de Motor",
       "shortDescription": "Diagnóstico de motores modernos, retíficas completas.",
       "id": 6
