@@ -59,3 +59,7 @@ html, body, #root {
 .banner-home > div {
     flex: 1;
 }
+
+.service-detail-container {
+    max-width: 900px;
+}

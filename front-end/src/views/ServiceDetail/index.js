@@ -42,7 +42,7 @@ export function ServiceDetailView () {
     }
     return (
         <Layout>
-            <Container>
+            <Container className="service-detail-container">
             {errorMessage ? (
                 <Alert variant="danger" className="mt-3">{errorMessage}</Alert>
             ) : (
