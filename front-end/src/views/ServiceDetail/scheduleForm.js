@@ -8,6 +8,13 @@ export function ScheduleForm () {
         userEmail: ''
     })
 
+    const handleChange = (event) => {
+        setFormData({
+            ... formData,
+            [event.target.name]: event.target.value 
+        })
+    }
+
     return (
         <>
         <h2>Formulário de agendamento</h2>
@@ -17,10 +24,8 @@ export function ScheduleForm () {
                 <Form.Control
                 placeholder="Informe seu nome"
                 value={formData.userName}
-                onChange={event => setFormData({
-                    ... formData,
-                    userName: event.target.value
-                })}
+                onChange={handleChange}
+                name="userName"
                 />
             </Form.Group>
             <Form.Group controlId="schedule-email" className="mb-3">
@@ -28,10 +33,8 @@ export function ScheduleForm () {
                 <Form.Control
                 placeholder="Informe seu e-mail"
                 value={formData.userEmail}
-                onChange={event => setFormData({
-                    ... formData,
-                    userEmail: event.target.value
-                })}
+                onChange={handleChange}
+                name="userEmail"
                 />
             </Form.Group>
             <Button className="btn-services">Agendar</Button>
