@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { Layout } from "../../components/Layout";
 import { Loading } from "../../components/loading";
 import { NotFoundView } from "../NotFound";
+import { ScheduleForm } from "./scheduleForm";
 import { Schedules } from "./schedules";
 
 
@@ -46,9 +47,10 @@ export function ServiceDetailView () {
                 <Alert variant="danger" className="mt-3">{errorMessage}</Alert>
             ) : (
                 <>
-                <h1>{service.name}</h1>
+                <h1 className="text-center mt-4">{service.name}</h1>
                 <p>{service.description}</p>
                 <Schedules schedules={service.schedules}/>
+                <ScheduleForm/>
                 </>
             )}
             </Container>
