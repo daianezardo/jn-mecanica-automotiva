@@ -50,7 +50,7 @@ export function ServiceDetailView () {
                 <h1 className="text-center mt-4">{service.name}</h1>
                 <p>{service.description}</p>
                 <Schedules schedules={service.schedules}/>
-                <ScheduleForm/>
+                <ScheduleForm serviceId={id}/>
                 </>
             )}
             </Container>
