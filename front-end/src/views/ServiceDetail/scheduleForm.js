@@ -1,14 +1,16 @@
 import { useState } from "react"
 import { Alert, Button, Form } from "react-bootstrap"
 
+const initialFormData = {
+    userName: '',
+    userEmail: ''
+}
 
 export function ScheduleForm ({ serviceId }) {
     const [showSuccess, setShowSuccess] = useState(false)
+    const [submiting, setSubmiting] = useState(false)
     const [errorMessage, setErrorMessage] = useState()
-    const [formData, setFormData] = useState({
-        userName: '',
-        userEmail: ''
-    })
+    const [formData, setFormData] = useState(initialFormData)
 
     const handleChange = (event) => {
         setFormData({
@@ -21,6 +23,7 @@ export function ScheduleForm ({ serviceId }) {
         event.preventDefault()
         try {
             setErrorMessage(undefined)
+            setSubmiting(true)
             await fetch(`${process.env.REACT_APP_API_URL}/schedules`,{
                 method: 'POST',
                 body: JSON.stringify({
@@ -33,10 +36,12 @@ export function ScheduleForm ({ serviceId }) {
                 }
             })
             setShowSuccess(true)
+            setFormData(initialFormData)
         } catch (err) {
             console.error(err)
             setErrorMessage('Falha ao fazer agendamento. Tente novamente.')
         }
+        setSubmiting(false)
     }
 
 
@@ -71,7 +76,7 @@ export function ScheduleForm ({ serviceId }) {
                 required
                 />
             </Form.Group>
-            <Button type="submit" className="btn-services">Agendar</Button>
+            <Button type="submit" className="btn-services" disabled={submiting}>Agendar</Button>
         </Form>
         </>
     )
