@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Alert, Container } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { Layout } from "../../components/Layout";
@@ -13,29 +13,29 @@ export function ServiceDetailView () {
     const [service, setService] = useState()
     const [loading, setLoading] = useState(true)
     const [errorMessage, SetErrorMessage] = useState()
-    useEffect(() => {
-        const fetchCourse = async () => {      
-            try {
-                const response = await fetch(`${process.env.REACT_APP_API_URL}/services/${id}?_embed=schedules`)
-                if (!response.ok) {
-                    throw new Error('Response not ok.')
-                }
-                const data = await response.json()
-                setService(data)
-                setLoading(false)
-            } catch (err) {
-                const message = err.message === 'Response not ok.' 
-                ? '404' 
-                : 'Falha ao buscar informações do serviço. Recarregue a página'
-                SetErrorMessage(message)
-                setLoading(false)
+    const fetchService = useCallback(async () => {      
+        try {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/services/${id}?_embed=schedules`)
+            if (!response.ok) {
+                throw new Error('Response not ok.')
             }
+            const data = await response.json()
+            setService(data)
+            setLoading(false)
+        } catch (err) {
+            const message = err.message === 'Response not ok.' 
+            ? '404' 
+            : 'Falha ao buscar informações do serviço. Recarregue a página'
+            SetErrorMessage(message)
+            setLoading(false)
         }
-
-        fetchCourse()   
     }, [id])
+    
+    useEffect(() => {
+        fetchService()   
+    }, [fetchService])
     if (loading) {
-        return <Loading />
+        return <Loading />  
     }
     if (errorMessage === '404') {
         return <NotFoundView /> 
@@ -50,7 +50,7 @@ export function ServiceDetailView () {
                 <h1 className="text-center mt-4">{service.name}</h1>
                 <p>{service.description}</p>
                 <Schedules schedules={service.schedules}/>
-                <ScheduleForm serviceId={id}/>
+                <ScheduleForm serviceId={id} onRegister={fetchService}/>
                 </>
             )}
             </Container>

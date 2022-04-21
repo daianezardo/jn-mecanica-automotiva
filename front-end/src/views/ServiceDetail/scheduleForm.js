@@ -6,7 +6,7 @@ const initialFormData = {
     userEmail: ''
 }
 
-export function ScheduleForm ({ serviceId }) {
+export function ScheduleForm ({ serviceId, onRegister }) {
     const [showSuccess, setShowSuccess] = useState(false)
     const [submiting, setSubmiting] = useState(false)
     const [errorMessage, setErrorMessage] = useState()
@@ -37,6 +37,7 @@ export function ScheduleForm ({ serviceId }) {
             })
             setShowSuccess(true)
             setFormData(initialFormData)
+            onRegister()
         } catch (err) {
             console.error(err)
             setErrorMessage('Falha ao fazer agendamento. Tente novamente.')
