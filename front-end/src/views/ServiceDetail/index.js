@@ -3,6 +3,7 @@ import { Alert, Container } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { Layout } from "../../components/Layout";
 import { Loading } from "../../components/loading";
+import { getServiceById } from "../../service/service.service";
 import { NotFoundView } from "../NotFound";
 import { ScheduleForm } from "./scheduleForm";
 import { Schedules } from "./schedules";
@@ -15,11 +16,7 @@ export function ServiceDetailView () {
     const [errorMessage, SetErrorMessage] = useState()
     const fetchService = useCallback(async () => {      
         try {
-            const response = await fetch(`${process.env.REACT_APP_API_URL}/services/${id}?_embed=schedules`)
-            if (!response.ok) {
-                throw new Error('Response not ok.')
-            }
-            const data = await response.json()
+            const data = await getServiceById(id)
             setService(data)
             setLoading(false)
         } catch (err) {

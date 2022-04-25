@@ -3,23 +3,23 @@ import { CardServices } from "../../components/cardservices"
 import { Layout } from "../../components/Layout"    
 import { useEffect, useState } from "react"
 import { Loading } from "../../components/loading"
+import { getServices } from "../../service/service.service"
 
 export function ServicesView () {
     const [services, setServices] = useState([])
     const [loading, setLoading] = useState(true)
-    const [errorMessage, SetErrorMessage] = useState()
+    const [errorMessage, setErrorMessage] = useState()
      useEffect(() => {
-        fetch(`${process.env.REACT_APP_API_URL}/services`)
-        .then((response) => response.json())
-        .then((data) => { 
-            setServices(data)
-         })
-         .catch(() => {
-             SetErrorMessage('Falha ao buscar serviços. Recarregue a página.')
-         })
-         .finally(() => {
+         const fetchServices = async () => {
+            try {
+             const data = await getServices()
+             setServices(data)
+            } catch {
+                setErrorMessage('Falha ao buscar serviços. Recarregue a página.')
+            }
             setLoading(false)
-         })
+         }
+         fetchServices()
     }, [])
     return (
         <Layout>

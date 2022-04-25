@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Alert, Button, Form } from "react-bootstrap"
+import { createSchedules } from "../../service/schedules.service"
 
 const initialFormData = {
     userName: '',
@@ -24,17 +25,12 @@ export function ScheduleForm ({ serviceId, onRegister }) {
         try {
             setErrorMessage(undefined)
             setSubmiting(true)
-            await fetch(`${process.env.REACT_APP_API_URL}/schedules`,{
-                method: 'POST',
-                body: JSON.stringify({
-                   name: formData.userName,
-                   email: formData.userEmail,
-                   serviceId: parseInt(serviceId)     
-                }),
-                headers: {
-                    'content-type': 'application/json'
-                }
+            await createSchedules({
+                name: formData.userName,
+                email: formData.userEmail,
+                serviceId: parseInt(serviceId)  
             })
+           
             setShowSuccess(true)
             setFormData(initialFormData)
             onRegister()
