@@ -1,5 +1,7 @@
+import { apiUrl } from "./Api.service"
+
 export const getServices = async () => {
-    const response = await fetch(`${process.env.REACT_APP_API_URL}/services/`)
+    const response = await fetch(`${apiUrl}/services/`)
     if (!response.ok) {
         throw new Error('Response not ok.')
     }

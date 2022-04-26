@@ -1,5 +1,7 @@
+import { apiUrl } from "./Api.service"
+
 export const createSchedules = async (schedulesData) => {
-    const response = await fetch(`${process.env.REACT_APP_API_URL}/schedules`,{
+    const response = await fetch(`${apiUrl}/schedules`,{
         method: 'POST',
         body: JSON.stringify(schedulesData),   
         headers: {
