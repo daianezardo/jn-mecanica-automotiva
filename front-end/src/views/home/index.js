@@ -2,13 +2,14 @@ import { Button, Container } from "react-bootstrap";
 import { Layout } from "../../components/Layout";
 import Car from "../../assets/img/car.jpg"
 import { Link } from "react-router-dom";
+import styled from "styled-components"
 
 
 export function HomeView() {
     return (
       <Layout>
           <Container>
-        <div className='shadow border p-4 p-md-5 git my-3 banner-home d-md-flex align-items-center'>
+        <BannerHome className='shadow border p-4 p-md-5 git my-3 d-md-flex align-items-center'>
           <div>
      <h1>Bem vindo(a) à JN!</h1>
      <p>Conheça nossos serviços</p>
@@ -18,8 +19,23 @@ export function HomeView() {
           <div>
      <img src={Car} alt='JN Mecânica Automotiva' width={360} height={225} className='img-fluid'/>
           </div>
-        </div>
+        </BannerHome>
         </Container>
       </Layout>
     )
   }
+
+  const BannerHome = styled.div`
+    & h1 {
+    color: #73F9C9;
+    }
+    & p {
+    font-size: 1.125rem;
+    }
+
+    & > div {
+      flex: 1;
+    }
+
+
+  `

@@ -7,6 +7,7 @@ import { getServiceById } from "../../service/service.service";
 import { NotFoundView } from "../NotFound";
 import { ScheduleForm } from "./scheduleForm";
 import { Schedules } from "./schedules";
+import styled from "styled-components"
 
 
 export function ServiceDetailView () {
@@ -39,7 +40,7 @@ export function ServiceDetailView () {
     }
     return (
         <Layout>
-            <Container className="service-detail-container">
+            <ContainerStyled>
             {errorMessage ? (
                 <Alert variant="danger" className="mt-3">{errorMessage}</Alert>
             ) : (
@@ -50,7 +51,11 @@ export function ServiceDetailView () {
                 <ScheduleForm serviceId={id} onRegister={fetchService}/>
                 </>
             )}
-            </Container>
+            </ContainerStyled>
         </Layout>
     )
 }
+
+const ContainerStyled = styled(Container)`
+    max-width: 900px;
+`
