@@ -4,6 +4,7 @@ import { HomeView } from "./views/home";
 import { NotFoundView } from "./views/NotFound"
 import { ServiceDetailView } from "./views/ServiceDetail";
 import { DashboardView } from "./views/dashboard";
+import { LoginView } from "./views/login";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Route path='/servicos' element={<ServicesView/>} />
       <Route path='/servicos/:id' element={<ServiceDetailView/>} />
       <Route path="/portal" element={<DashboardView />} />
+      <Route path="/portal/login" element={<LoginView />} />
       <Route path='*' element={<NotFoundView />} />
     </Routes>
   );
