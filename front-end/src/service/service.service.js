@@ -1,7 +1,7 @@
 import { apiUrl } from "./Api.service"
 
 export const getServices = async () => {
-    const response = await fetch(`${apiUrl}/services/`)
+    const response = await fetch(`${apiUrl}/services`)
     if (!response.ok) {
         throw new Error('Response not ok.')
     }
@@ -9,7 +9,7 @@ export const getServices = async () => {
 }
 
 export const getServiceById = async (serviceId) => {
-    const response = await fetch(`${process.env.REACT_APP_API_URL}/services/${serviceId}?_embed=schedules`)
+    const response = await fetch(`${apiUrl}/services/${serviceId}?_embed=schedules`)
     if (!response.ok) {
         throw new Error('Response not ok.')
     }

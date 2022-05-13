@@ -14,10 +14,10 @@ export function RegisterForm () {
         })
     }
     const handleSubmit = (event) => {
-        event.preventDefauld()
+        event.preventDefault()
     }
     return (
-        <Form>
+        <Form onSubmit={handleSubmit}>
             <p className="h4">Cadastre-se</p>
             <Form.Group className="mb-3" controlId="register-nome">
                 <Form.Label className="m-0">Nome</Form.Label>

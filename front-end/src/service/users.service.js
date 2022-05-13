@@ -1,0 +1,19 @@
+import { apiUrl } from "./Api.service"
+
+export const login = async (credentialsData) => {
+   const response = await fetch(`${apiUrl}/login`, {
+        method: 'POST',
+        body: JSON.stringify(credentialsData),
+        headers: {
+            'content-type': 'application/json'
+        }
+    })
+    if (!response.ok) {
+        const data = await response.json()
+        const message = data === 'Incorrect password' || data === 'Cannot find user'
+        ? 'Credentials invalid'
+        : 'Response not ok.'
+        throw new Error(message)
+    }
+    
+}
