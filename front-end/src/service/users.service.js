@@ -1,5 +1,5 @@
 import { apiUrl } from "./Api.service"
-import { setStorageItem } from "./storage.service"
+import { removeStorageItem, setStorageItem } from "./storage.service"
 
 export const login = async (credentialsData) => {
    const response = await fetch(`${apiUrl}/login`, {
@@ -22,4 +22,8 @@ export const login = async (credentialsData) => {
     }
     setStorageItem('user',  JSON.stringify(userData))
     return userData
+}
+
+export const logout = () => {
+    removeStorageItem('user')
 }
