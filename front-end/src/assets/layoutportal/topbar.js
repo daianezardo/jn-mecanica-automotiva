@@ -4,11 +4,10 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components"
 import { logout } from "../../service/users.service";
 import { userLogout } from "../../store/User/User.action";
+import { selectUser } from "../../store/User/User.selectors";
 
 export function TopBar( { onOpen } ) {
-    const user = useSelector((state) => {
-        return state
-    })
+    const user = useSelector(selectUser)
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const handleLogout = () => {
