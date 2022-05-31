@@ -23,11 +23,7 @@ export function LoginForm () {
         try {
            const userData = await login(formData)
            // Enviar para o redux
-           const action = {
-               type: 'USER_LOGIN',
-               payload: userData
-           }
-           dispatch(action)
+           dispatch(userLogin(userData))
            navigate('/portal')
         } catch (error) {
             const message = error.message === 'Credentials invalid.'

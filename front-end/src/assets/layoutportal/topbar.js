@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components"
 import { logout } from "../../service/users.service";
+import { userLogout } from "../../store/User/User.action";
 
 export function TopBar( { onOpen } ) {
     const user = useSelector((state) => {
@@ -12,10 +13,7 @@ export function TopBar( { onOpen } ) {
     const navigate = useNavigate()
     const handleLogout = () => {
         logout()
-        const action = {
-            type: 'USER_LOGOUT'
-        }
-        dispatch(action)
+        dispatch(userLogout())
         navigate('/')
     }
     return (
