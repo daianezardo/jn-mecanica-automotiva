@@ -1,3 +1,1 @@
-export const selectUser =  (state) => {
-    return state
-}
+export const selectUser =  state => state
