@@ -2,8 +2,11 @@ import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Logo from '../../assets/img/logo-jn.png'
 import styled from "styled-components"
+import { useSelector } from "react-redux";
+import { selectIsUserLoggedId } from "../../store/User/User.selectors";
 
 export function Header() {
+  const isUserLoggedIn = useSelector(selectIsUserLoggedId)
     return (
       <header>
         <NavBarStyled expand='md'>
@@ -16,7 +19,12 @@ export function Header() {
           <Nav className='ms-auto'>
           <NavLinkStyled forwardedAs={Link} to='/'>Home</NavLinkStyled>
           <NavLinkStyled forwardedAs={Link} to='/servicos'>Serviços</NavLinkStyled>
-          <NavLinkStyled forwardedAs={Link} to='/portal/login'>Login</NavLinkStyled>
+          {isUserLoggedIn ? (
+            <NavLinkStyled forwardedAs={Link} to='/portal'>Acessar portal</NavLinkStyled>
+          ) : (
+            <NavLinkStyled forwardedAs={Link} to='/portal/login'>Login</NavLinkStyled>
+          ) }
+
           </Nav>
           </Navbar.Collapse>
         </Container>
