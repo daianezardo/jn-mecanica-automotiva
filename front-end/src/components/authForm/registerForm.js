@@ -7,7 +7,7 @@ import { userLogin } from "../../store/User/User.action";
 import { toast } from "react-toastify";
 
 
-export function RegisterForm () {
+export function RegisterForm ( { redirectAfterLogin }) {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -26,7 +26,10 @@ export function RegisterForm () {
         try {
             const userData = await createUser(formData)
             dispatch(userLogin(userData))
-            navigate('/portal')
+            if (redirectAfterLogin) {
+                navigate('/portal')
+            }
+            
         } catch (error) {
             const message = error.message === 'Email already exists'
             ? 'Este e-mail já está em uso.'
