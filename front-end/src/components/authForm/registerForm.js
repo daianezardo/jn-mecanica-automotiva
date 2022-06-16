@@ -7,7 +7,7 @@ import { userLogin } from "../../store/User/User.action";
 import { toast } from "react-toastify";
 
 
-export function RegisterForm ( { redirectAfterLogin }) {
+export function RegisterForm ({ redirectAfterLogin }) {
     const [formData, setFormData] = useState({
         name: '',
         email: '',

@@ -6,7 +6,7 @@ import { login } from "../../service/users.service";
 import { useNavigate } from "react-router-dom";
 import { userLogin } from "../../store/User/User.action";
 
-export function LoginForm ( { redirectAfterLogin }) {
+export function LoginForm ({ redirectAfterLogin }) {
     const [formData, setFormData] = useState({
         email: '',
         password: ''
@@ -24,7 +24,7 @@ export function LoginForm ( { redirectAfterLogin }) {
         try {
            const userData = await login(formData)
            // Enviar para o redux
-           dispatch(userLogin(userData))
+           dispatch(userLogin(userData))    
            if (redirectAfterLogin) {
             navigate('/portal')
            }
@@ -36,6 +36,7 @@ export function LoginForm ( { redirectAfterLogin }) {
             console.error(error)
             toast.error(message)
         }
+        
     }
     return (
         <Form onSubmit={handleSubmit}>

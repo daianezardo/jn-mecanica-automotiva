@@ -19,7 +19,6 @@ const menuItens = [
 
 export function Sidebar ( {isOpen, onClose}) {
   const { type } = useSelector(selectUser)
-  const filteredMenuItems = menuItens.filter(item => item.userTypes.includes(type))
     return (
       <SidebarStyled
         className="bg-dark text-white d-flex flex-column p-3"
@@ -33,7 +32,7 @@ export function Sidebar ( {isOpen, onClose}) {
         <p className="h1">JN Mecânica Automotiva</p>
         <hr />
         <Nav variant="pills" className="flex-column">
-          {filteredMenuItems.map((item, index) => (
+          {menuItens.filter(item => item.userTypes.includes(type)).map((item, index) => (
            <SideBarItem key={index} item={item}/>
           ))}
         </Nav>

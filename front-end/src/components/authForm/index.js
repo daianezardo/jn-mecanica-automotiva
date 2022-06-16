@@ -6,7 +6,7 @@ import { RegisterForm } from "./registerForm";
 export function AuthForm ({ redirectAfterLogin = true }) {
     return (
         <Row>
-            <Col xs={12} lg='auto' className="flex-fill"><LoginForm/></Col>
+            <Col xs={12} lg='auto' className="flex-fill"><LoginForm redirectAfterLogin={redirectAfterLogin}/></Col>
             <Or xs={12} lg='auto' className="flex-fill">ou</Or>
             <Col xs={12} lg='auto' className="flex-fill"><RegisterForm redirectAfterLogin={redirectAfterLogin}/></Col>
         </Row>

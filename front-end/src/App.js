@@ -6,6 +6,7 @@ import { ServiceDetailView } from "./views/ServiceDetail";
 import { DashboardView } from "./views/dashboard";
 import { LoginView } from "./views/login";
 import { PrivateRoute } from "./components/PrivateRoute";
+import { AdminServiceView } from "./views/AdminServices";
 
 function App() {
   return (
@@ -18,6 +19,10 @@ function App() {
         {<PrivateRoute>
         <DashboardView />
         </PrivateRoute>} />
+        <Route path="/portal/servicos" element=
+        {<PrivateRoute userTypes={[1]}>
+          <AdminServiceView/>
+          </PrivateRoute> }/>
       <Route path="/portal/login" element={<LoginView />} />
       <Route path='*' element={<NotFoundView />} />
     </Routes>
