@@ -10,16 +10,17 @@ import { TableServices } from "./TableServices";
 export function AdminServiceView () {
     const [services, setServices] = useState([])
     const [loading, setLoading] = useState(true)
-    useEffect(() => {
-        const fetchServices = async () => {
-            try {
-               const data = await getServices()
-               setServices(data)
-            } catch {
-                toast.error('Falha ao buscar serviços. Recarregue a página.')
-            }
-            setLoading(false)
+    const fetchServices = async () => {
+        try {
+           const data = await getServices()
+           setServices(data)
+        } catch {
+            toast.error('Falha ao buscar serviços. Recarregue a página.')
         }
+        setLoading(false)
+    }
+    useEffect(() => {
+        
         fetchServices()
     }, [])
     return (
@@ -30,7 +31,7 @@ export function AdminServiceView () {
             buttonLink='/portal/servicos/cadastro'
             />
             {loading && <Loading/>}
-            <TableServices services={services}/>
+            <TableServices services={services} onDeleteService={fetchServices}/>
         </LayoutPortal>
     )
 }
