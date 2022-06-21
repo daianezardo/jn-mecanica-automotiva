@@ -40,3 +40,18 @@ export const createService = async serviceData => {
         throw new Error('Response not ok.')
       }
     }
+
+    export const updateService = async (serviceId, serviceData) => {
+        const body = JSON.stringify(serviceData)
+        const response = await fetch(`${apiUrl}/services/${serviceId}`,{
+            method: 'PUT',
+            body,
+            headers: {
+                'content-type': 'application/json',
+                ...getAuthorizationHeaders()
+              }
+        })
+        if (!response.ok) {
+            throw new Error('Response not ok.')
+          }
+    }

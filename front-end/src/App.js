@@ -7,6 +7,7 @@ import { DashboardView } from "./views/dashboard";
 import { LoginView } from "./views/login";
 import { PrivateRoute } from "./components/PrivateRoute";
 import { AdminServiceView } from "./views/AdminServices";
+import { AdminEditService } from "./views/AdminEditService";
 import { AdminAddService } from "./views/AdminAddService";
 
 function App() {
@@ -28,6 +29,11 @@ function App() {
           <Route path="/portal/servicos/cadastro" element=
         {<PrivateRoute userTypes={[1]}>
           <AdminAddService/>
+          </PrivateRoute> }
+          />
+          <Route path="/portal/servicos/:id" element=
+        {<PrivateRoute userTypes={[1]}>
+          <AdminEditService/>
           </PrivateRoute> }
           />
       <Route path="/portal/login" element={<LoginView />} />
