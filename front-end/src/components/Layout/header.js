@@ -1,25 +1,54 @@
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Logo from '../../assets/img/logo-jn.png'
+import styled from "styled-components"
+import { useSelector } from "react-redux";
+import { selectIsUserLoggedId } from "../../store/User/User.selectors";
 
 export function Header() {
+  const isUserLoggedIn = useSelector(selectIsUserLoggedId)
     return (
       <header>
-        <Navbar expand='md' className='main-navbar'>
+        <NavBarStyled expand='md'>
         <Container>
           <Navbar.Brand as={Link} to='/'>
             <img src={Logo} alt='JN Mecânica Automotiva' width={115} height={75} /> 
           </Navbar.Brand>
-          <Navbar.Toggle aria-controls='navbar-header' />
+          <NavbarToggleStyled aria-controls='navbar-header' />
           <Navbar.Collapse id='navbar-header' >
           <Nav className='ms-auto'>
-          <Nav.Link as={Link} to='/'>Home</Nav.Link>
-          <Nav.Link as={Link} to='/servicos'>Serviços</Nav.Link>
+          <NavLinkStyled forwardedAs={Link} to='/'>Home</NavLinkStyled>
+          <NavLinkStyled forwardedAs={Link} to='/servicos'>Serviços</NavLinkStyled>
+          {isUserLoggedIn ? (
+            <NavLinkStyled forwardedAs={Link} to='/portal'>Acessar portal</NavLinkStyled>
+          ) : (
+            <NavLinkStyled forwardedAs={Link} to='/portal/login'>Login</NavLinkStyled>
+          ) }
+
           </Nav>
           </Navbar.Collapse>
         </Container>
-        </Navbar>
+        </NavBarStyled>
       </header>
     )
   }
+
+  const NavBarStyled = styled(Navbar)`
+    background-color: #73F9C9;
+
+  `
+  const NavbarToggleStyled = styled(Navbar.Toggle)`
+    background-color: #FFF;
+    border: none;
+  `
   
+  const NavLinkStyled = styled(Nav.Link)`
+    background-color: #FFF;
+    border-radius: 3px;
+    text-align: center;
+    margin: 5px 0;
+    box-shadow: 2px 2px 2px rgba(42, 69, 136, 0.3);
+    @media (min-width: 768px) {
+      margin: 0 5px;
+    }
+  `

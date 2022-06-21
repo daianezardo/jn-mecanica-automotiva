@@ -1,46 +1,31 @@
 import { useState } from "react"
-import { Alert, Button, Form } from "react-bootstrap"
+import { Button } from "react-bootstrap"
+import { useSelector } from "react-redux"
+import { toast } from "react-toastify"
+import { AuthForm } from "../../components/authForm"
+import { createSchedules } from "../../service/schedules.service"
+import { selectUser } from "../../store/User/User.selectors"
 
-const initialFormData = {
-    userName: '',
-    userEmail: ''
-}
 
 export function ScheduleForm ({ serviceId, onRegister }) {
-    const [showSuccess, setShowSuccess] = useState(false)
+    const user = useSelector(selectUser)
     const [submiting, setSubmiting] = useState(false)
-    const [errorMessage, setErrorMessage] = useState()
-    const [formData, setFormData] = useState(initialFormData)
 
-    const handleChange = (event) => {
-        setFormData({
-            ...formData,
-            [event.target.name]: event.target.value 
-        })
-    }
-
-    const handleSubmit = async (event) => {
-        event.preventDefault()
+    const handleInscription = async () => {
         try {
-            setErrorMessage(undefined)
+            
             setSubmiting(true)
-            await fetch(`${process.env.REACT_APP_API_URL}/schedules`,{
-                method: 'POST',
-                body: JSON.stringify({
-                   name: formData.userName,
-                   email: formData.userEmail,
-                   serviceId: parseInt(serviceId)     
-                }),
-                headers: {
-                    'content-type': 'application/json'
-                }
+            await createSchedules({
+                name: user.name,
+                email: user.email,
+                serviceId: parseInt(serviceId),  
+                userId: user.id
             })
-            setShowSuccess(true)
-            setFormData(initialFormData)
+            toast.success('Agendado com sucesso.')
             onRegister()
         } catch (err) {
             console.error(err)
-            setErrorMessage('Falha ao fazer agendamento. Tente novamente.')
+            toast.error('Falha ao fazer agendamento. Tente novamente.')
         }
         setSubmiting(false)
     }
@@ -49,36 +34,14 @@ export function ScheduleForm ({ serviceId, onRegister }) {
     return (
         <>
         <h2>Formulário de agendamento</h2>
-        {showSuccess && (
-            <Alert variant="success" dismissible onClose={() => setShowSuccess(false)}>Agendado com sucesso</Alert>
+        {user ? (
+            <Button onClick={handleInscription} disabled={submiting}>Agendar</Button>
+            ) : (
+                <>
+                <p>Faça login ou crie uma conta para agendar o serviço.</p>
+                <AuthForm redirectAfterLogin={false} />
+                </>
         )}
-        {errorMessage && (
-            <Alert variant="danger">{errorMessage}</Alert>
-        )}
-        <Form onSubmit={handleSubmit}>
-            <Form.Group controlId="schedule-name" className="mb-3">
-                <Form.Label className="m-0">Nome</Form.Label>
-                <Form.Control
-                placeholder="Informe seu nome"
-                value={formData.userName}
-                onChange={handleChange}
-                name="userName"
-                required
-                />
-            </Form.Group>
-            <Form.Group controlId="schedule-email" className="mb-3">
-                <Form.Label className="m-0">E-mail</Form.Label>
-                <Form.Control
-                type="email"
-                placeholder="Informe seu e-mail"
-                value={formData.userEmail}
-                onChange={handleChange}
-                name="userEmail"
-                required
-                />
-            </Form.Group>
-            <Button type="submit" className="btn-services" disabled={submiting}>Agendar</Button>
-        </Form>
         </>
     )
 }
