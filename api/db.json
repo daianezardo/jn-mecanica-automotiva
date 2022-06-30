@@ -1,0 +1,85 @@
+{
+  "services": [
+    {
+      "image": "/images/freio.png",
+      "name": "Inspeção de Freios",
+      "description": "A inspeção nos freios e suspensão deve ser realizada periodicamente para garantir o máximo desempenho dos sistemas para manter o tempo de resposta de frenagem suficiente. Por meio de equipamentos com certificação, o estado do veículo é avaliado, assim como uma necessidade de manutenção.",
+      "shortDescription": "Avaliação do estado do veículo por meio de equipamentos.",
+      "id": 1
+    },
+    {
+      "image": "/images/balanceamento.jpg",
+      "name": "Alinhamento e Balanceamento",
+      "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur nesciunt provident repudiandae laborum fugiat facilis voluptatem fuga, incidunt, unde deserunt sequi eveniet est commodi alias! Tempore voluptas molestias nemo ea.",
+      "shortDescription": "Alinhamento e balanceamento dos pneus.",
+      "id": 2
+    },
+    {
+      "image": "/images/troca-de-oleo.jpg",
+      "name": "Troca de Óleo",
+      "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur nesciunt provident repudiandae laborum fugiat facilis voluptatem fuga, incidunt, unde deserunt sequi eveniet est commodi alias! Tempore voluptas molestias nemo ea.",
+      "shortDescription": "Realização do processo de troca de óleo e filtro.",
+      "id": 3
+    },
+    {
+      "image": "/images/injection.jpg",
+      "name": "Injeção Eletrônica",
+      "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur nesciunt provident repudiandae laborum fugiat facilis voluptatem fuga, incidunt, unde deserunt sequi eveniet est commodi alias! Tempore voluptas molestias nemo ea.",
+      "shortDescription": "Especialista em injeção eletrônica moderna e convencionais.",
+      "id": 4
+    },
+    {
+      "image": "/images/sistem.jpg",
+      "name": "Sistema de Exaustão",
+      "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur nesciunt provident repudiandae laborum fugiat facilis voluptatem fuga, incidunt, unde deserunt sequi eveniet est commodi alias! Tempore voluptas molestias nemo ea. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur nesciunt provident repudiandae laborum fugiat facilis voluptatem fuga, incidunt, unde deserunt sequi eveniet est commodi alias! Tempore voluptas molestias nemo ea.",
+      "shortDescription": "Escapamento original e modificados.",
+      "id": 5
+    },
+    {
+      "image": "/images/mecanica.jpg",
+      "name": "Reparo de Motor",
+      "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur nesciunt provident repudiandae laborum fugiat facilis voluptatem fuga, incidunt, unde deserunt sequi eveniet est commodi alias! Tempore voluptas molestias nemo ea. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur nesciunt provident repudiandae laborum fugiat facilis voluptatem fuga, incidunt, unde deserunt sequi eveniet est commodi alias! Tempore voluptas molestias nemo ea.",
+      "shortDescription": "Diagnóstico de motores modernos, retíficas completas.",
+      "id": 6
+    }
+  ],
+  "schedules": [
+    {
+      "name": "Cliente",
+      "email": "cliente@cliente.com",
+      "serviceId": 2,
+      "userId": 1,
+      "id": 1
+    }
+  ],
+  "users": [
+    {
+      "email": "cliente@cliente.com",
+      "password": "$2a$10$FR5XsXVIBGzi7ZeX4DGxlO0iitrIU9f6HL4aIfNFiLTyUJpSPwGhy",
+      "name": "Cliente",
+      "type": 2,
+      "id": 1
+    },
+    {
+      "email": "admin@admin.com",
+      "password": "$2a$10$3ebU1QAnSFoFnk9EDk9qAOmKuGTuVBfA.AfSMVIpdRTd92ujmP9jy",
+      "name": "Administrador",
+      "type": 1,
+      "id": 2
+    },
+    {
+      "email": "daiane@daiane.com",
+      "password": "$2a$10$zWTwpRJP7.Sw7WAaXgpYp.OZf/6kK0r9R/1KUG33OrlRbmw.fUjA.",
+      "name": "Daiane",
+      "type": 2,
+      "id": 3
+    },
+    {
+      "email": "casa@casa.com",
+      "password": "$2a$10$QxfDZCWwWhSqE780IcuVwunWz/.Wnonh3XBgRnAM5hfM7GWSTXoiy",
+      "name": "Casa",
+      "type": 2,
+      "id": 4
+    }
+  ]
+}
